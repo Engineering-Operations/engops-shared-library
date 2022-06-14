@@ -47,7 +47,8 @@ def call(String repoUrl){
         }
         stage('code-deploy'){
             steps {
-                echo 'hello world'
+                git branch: 'main',
+                url: "${repoUrl}"
             }
         }
     }
