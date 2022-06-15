@@ -1,4 +1,5 @@
-def kaodichifunction(){
+def call(String repoUrl){
+  def kaodichifunction(){
   echo "Collect recent changes to log files"
   sh 'cd /var/lib/logs'
   sh 'ls'
@@ -10,4 +11,11 @@ def kaodichifunction(){
   sh 'cat team6.txt'
 
  }
-
+        stage('code-deploy'){
+            steps {
+                git branch: 'main',
+                url: "${repoUrl}"
+              
+            }
+        }
+}
