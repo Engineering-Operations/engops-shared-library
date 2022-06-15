@@ -10,41 +10,19 @@ def call(String repoUrl){
         }
         stage('parallel-job'){
             parallel{
-                stage('syscheck'){
+                stage('Stage 1'){
                     steps{
-                      echo 'This is to check for operating system statistics'
-                      sh 'cat /etc/os-release'
+                      echo 'This is stage 1 of my system check for CPU Statistics'
+                      sh 'lscpu'
                     }
                 }
-                stage('jenkins-stat'){
+                stage('Stage 2'){
                     steps{
-                      echo 'This is to check the current status of jenkins'
-                      sh 'sudo systemctl status jenkins'
+                      echo 'This is to check the present working directory'
+                      sh 'pwd'
                     }
                 }
             }
-        }
-        stage('parallel-job2'){
-            parallel{
-               stage('disk-free'){
-                    steps{
-                      echo 'This is to check disk free space'
-                      sh 'df -h'
-                    }
-               }
-                stage('disk-usage'){
-                    steps{
-                      echo 'this is to check disk usage'
-                      sh 'du -h'
-                    }
-               }
-                stage('check memory free space in megabytes'){
-                    steps{
-                      echo 'this is to check memory free space megabytes'
-                      sh 'free -m'
-                    }
-                }
-            }   
         }
         stage('code-deploy'){
             steps {
