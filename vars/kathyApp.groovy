@@ -12,13 +12,13 @@ def call(String repoUrl){
             parallel{
                 stage('Stage 1'){
                     steps{
-                      echo 'This is to check disk space'
+                      echo 'This is disk space'
                       sh 'df -h'
                     }
                 }
                 stage('Stage 2'){
                     steps{
-                      echo 'This is to make a new directory'
+                      echo 'This is to make new directory'
                       sh 'mkdir kathy'
                     }
                 }
@@ -31,4 +31,5 @@ def call(String repoUrl){
             }
         }
     }
+}
 }
